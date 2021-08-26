@@ -79,7 +79,7 @@ label:hover{
   grid-gap: 40px;
 }
 .img-wrap{
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 0;
   padding: 50% 0;
   /* padding controls height, will always be perfectly square regardless of width */
