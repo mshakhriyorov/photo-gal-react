@@ -1,22 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
 
-:root {
-  --primary: #efb6b2;
-  --secondary: #4e4e4e;
-  --error: #ff4a4a;
-}
+
+$primary: #efb6b2;
+$secondary: #4e4e4e;
+$error: #ff4a4a;
+
 
 /* base styles & title */
 body {
   font-family: "Noto Serif";
-  color: var(--secondary);
+  color: $secondary;
 }
 .App {
   max-width: 960px;
   margin: 0 auto;
 }
 .title h1 {
-  color: var(--primary);
+  color: $primary;
   font-size: 1.2rem;
   letter-spacing: 2px;
   font-weight: normal;
@@ -44,16 +44,16 @@ label {
   display: block;
   width: 30px;
   height: 30px;
-  border: 1px solid var(--primary);
+  border: 1px solid $primary;
   border-radius: 50%;
   margin: 10px auto;
   line-height: 30px;
-  color: var(--primary);
+  color: $primary;
   font-weight: bold;
   font-size: 24px;
 }
 label:hover {
-  background: var(--primary);
+  background: $primary;
   color: white;
   cursor: pointer;
 }
@@ -62,13 +62,13 @@ label:hover {
   font-size: 0.8rem;
 }
 .error {
-  color: var(--error);
+  color: $error;
 }
 
 /* progress bar styles */
 .progress-bar {
   height: 5px;
-  background: var(--primary);
+  background: $primary;
   margin-top: 20px;
 }
 
@@ -79,6 +79,7 @@ label:hover {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
 }
+
 .img-wrap {
   overflow: hidden;
   height: 0;
@@ -86,14 +87,44 @@ label:hover {
   /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
   opacity: 0.8;
+  transition: 0.3s linear;
+
+  .delete {
+    color: red;
+    font-size: 24px;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    backdrop-filter: blur(5px);
+    padding: 0px 6px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s linear;
+    display: none;
+    z-index: 1;
+
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+
+  img {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &:hover{
+    .delete{
+      display: block;
+    }
+  }
+
 }
-.img-wrap img {
-  width: 100%;
-  min-height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+
+
 
 /* modal styles */
 .backdrop {
@@ -103,6 +134,7 @@ label:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 111;
 }
 .backdrop img {
   display: block;
